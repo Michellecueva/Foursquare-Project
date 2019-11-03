@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class SearchVC: UIViewController {
+    
+    let locationManager = CLLocationManager()
+    let mapView = MKMapView()
     
     lazy var venueSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -37,18 +42,22 @@ class SearchVC: UIViewController {
         self.view.backgroundColor = .white
         addSubviews()
         addConstraints()
+        locationManager.delegate = self
+        requestLocationAndAuthorizeIfNeeded()
     }
     
     private func addSubviews() {
         self.view.addSubview(venueSearchBar)
         self.view.addSubview(locationSearchBar)
         self.view.addSubview(listButton)
+        self.view.addSubview(mapView)
     }
     
     private func addConstraints() {
         addVenueSearchBarConstraints()
         addLocationSearchBarConstraints()
         addListButtonConstraints()
+        addMapViewConstraints()
     }
     
     private func addVenueSearchBarConstraints() {
@@ -82,7 +91,47 @@ class SearchVC: UIViewController {
             listButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
+    
+    private func addMapViewConstraints() {
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            mapView.topAnchor.constraint(equalTo: locationSearchBar.bottomAnchor),
+            mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            mapView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    private func requestLocationAndAuthorizeIfNeeded() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.requestLocation()
+        default:
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+}
 
+extension SearchVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("New locations \(locations)")
+         mapView.showsUserLocation = true
+         mapView.userTrackingMode = .follow
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("An error occurred: \(error)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.requestLocation()
 
+        default:
+            break
+        }
+    }
 }
 
