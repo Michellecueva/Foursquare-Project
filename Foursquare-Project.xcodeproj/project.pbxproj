@@ -14,6 +14,14 @@
 		28367EC8236F74ED00B1568D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28367EC6236F74ED00B1568D /* LaunchScreen.storyboard */; };
 		28367ED3236F74ED00B1568D /* Foursquare_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367ED2236F74ED00B1568D /* Foursquare_ProjectTests.swift */; };
 		28367EDE236F76CE00B1568D /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367EDD236F76CE00B1568D /* CollectionVC.swift */; };
+		28367F102370996C00B1568D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F0F2370996C00B1568D /* CollectionViewCell.swift */; };
+		28367F12237099FA00B1568D /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F11237099FA00B1568D /* SearchTableViewCell.swift */; };
+		28367F1423709A2A00B1568D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F1323709A2A00B1568D /* ListViewController.swift */; };
+		28367F4C237212D900B1568D /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F4B237212D900B1568D /* SearchQuery.swift */; };
+		28367F552372236000B1568D /* QueryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F502372236000B1568D /* QueryAPIClient.swift */; };
+		28367F562372236000B1568D /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F512372236000B1568D /* NetworkHelper.swift */; };
+		28367F572372236000B1568D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F522372236000B1568D /* AppError.swift */; };
+		28367F582372236000B1568D /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F532372236000B1568D /* ImageHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +46,14 @@
 		28367ED2236F74ED00B1568D /* Foursquare_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foursquare_ProjectTests.swift; sourceTree = "<group>"; };
 		28367ED4236F74ED00B1568D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28367EDD236F76CE00B1568D /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		28367F0F2370996C00B1568D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		28367F11237099FA00B1568D /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		28367F1323709A2A00B1568D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		28367F4B237212D900B1568D /* SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
+		28367F502372236000B1568D /* QueryAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryAPIClient.swift; sourceTree = "<group>"; };
+		28367F512372236000B1568D /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		28367F522372236000B1568D /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		28367F532372236000B1568D /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +97,10 @@
 			children = (
 				28367EBB236F74EC00B1568D /* AppDelegate.swift */,
 				28367EBD236F74EC00B1568D /* SceneDelegate.swift */,
-				28367EBF236F74EC00B1568D /* SearchVC.swift */,
-				28367EDD236F76CE00B1568D /* CollectionVC.swift */,
+				28367F4D237212DF00B1568D /* Model */,
+				28367F1523709ABD00B1568D /* Controllers */,
+				28367F1623709AE700B1568D /* Views */,
+				28367F4E2372236000B1568D /* Networking */,
 				28367EC4236F74ED00B1568D /* Assets.xcassets */,
 				28367EC6236F74ED00B1568D /* LaunchScreen.storyboard */,
 				28367EC9236F74ED00B1568D /* Info.plist */,
@@ -97,6 +115,45 @@
 				28367ED4236F74ED00B1568D /* Info.plist */,
 			);
 			path = "Foursquare-ProjectTests";
+			sourceTree = "<group>";
+		};
+		28367F1523709ABD00B1568D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				28367EBF236F74EC00B1568D /* SearchVC.swift */,
+				28367F1323709A2A00B1568D /* ListViewController.swift */,
+				28367EDD236F76CE00B1568D /* CollectionVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		28367F1623709AE700B1568D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				28367F0F2370996C00B1568D /* CollectionViewCell.swift */,
+				28367F11237099FA00B1568D /* SearchTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		28367F4D237212DF00B1568D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				28367F4B237212D900B1568D /* SearchQuery.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28367F4E2372236000B1568D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				28367F502372236000B1568D /* QueryAPIClient.swift */,
+				28367F512372236000B1568D /* NetworkHelper.swift */,
+				28367F522372236000B1568D /* AppError.swift */,
+				28367F532372236000B1568D /* ImageHelper.swift */,
+			);
+			name = Networking;
+			path = "../../../Unit-4/Weather App/Weather App/Networking";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,10 +256,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28367F4C237212D900B1568D /* SearchQuery.swift in Sources */,
+				28367F102370996C00B1568D /* CollectionViewCell.swift in Sources */,
 				28367EC0236F74EC00B1568D /* SearchVC.swift in Sources */,
 				28367EBC236F74EC00B1568D /* AppDelegate.swift in Sources */,
+				28367F562372236000B1568D /* NetworkHelper.swift in Sources */,
+				28367F552372236000B1568D /* QueryAPIClient.swift in Sources */,
+				28367F12237099FA00B1568D /* SearchTableViewCell.swift in Sources */,
 				28367EDE236F76CE00B1568D /* CollectionVC.swift in Sources */,
+				28367F582372236000B1568D /* ImageHelper.swift in Sources */,
+				28367F572372236000B1568D /* AppError.swift in Sources */,
 				28367EBE236F74EC00B1568D /* SceneDelegate.swift in Sources */,
+				28367F1423709A2A00B1568D /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
