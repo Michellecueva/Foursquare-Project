@@ -22,6 +22,7 @@
 		28367F562372236000B1568D /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F512372236000B1568D /* NetworkHelper.swift */; };
 		28367F572372236000B1568D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F522372236000B1568D /* AppError.swift */; };
 		28367F582372236000B1568D /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F532372236000B1568D /* ImageHelper.swift */; };
+		28367F5C237225AB00B1568D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F5B237225AB00B1568D /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		28367F512372236000B1568D /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		28367F522372236000B1568D /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		28367F532372236000B1568D /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		28367F5B237225AB00B1568D /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				28367EBB236F74EC00B1568D /* AppDelegate.swift */,
 				28367EBD236F74EC00B1568D /* SceneDelegate.swift */,
+				28367F5B237225AB00B1568D /* Secrets.swift */,
 				28367F4D237212DF00B1568D /* Model */,
 				28367F1523709ABD00B1568D /* Controllers */,
 				28367F1623709AE700B1568D /* Views */,
@@ -267,6 +270,7 @@
 				28367F582372236000B1568D /* ImageHelper.swift in Sources */,
 				28367F572372236000B1568D /* AppError.swift in Sources */,
 				28367EBE236F74EC00B1568D /* SceneDelegate.swift in Sources */,
+				28367F5C237225AB00B1568D /* Secrets.swift in Sources */,
 				28367F1423709A2A00B1568D /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
