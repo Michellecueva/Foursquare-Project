@@ -15,6 +15,11 @@ class SearchVC: UIViewController {
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
     let searchRadius: CLLocationDistance = 2000
+    var userLocation = String() {
+        didSet {
+            locationSearchBar.placeholder = userLocation
+        }
+    }
     
     private var locations = [Location]() {
         didSet {
@@ -135,6 +140,30 @@ class SearchVC: UIViewController {
 extension SearchVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("New locations \(locations)")
+        
+        let geocoder = CLGeocoder()
+        
+        geocoder.reverseGeocodeLocation(locations[0]) { (placemarks, error) in
+            
+            guard let existingPlacemarks = placemarks else {
+                print(error as Any)
+                return
+            }
+            for placemark in existingPlacemarks {
+                let city = placemark.locality
+                let state = placemark.administrativeArea
+                
+                guard let userCity = city, let userState = state else {return}
+                
+                self.userLocation = "\(userCity), \(userState)"
+            }
+        }
+        
+//        let currentLocation = CLLocation(latitude: -22.963451, longitude: -43.198242)
+//        location.fetchCityAndCountry { city, country, error in
+//            guard let city = city, let country = country, error == nil else { return }
+//            print(city + ", " + country)  // Rio de Janeiro, Brazil
+//        }
         
          mapView.showsUserLocation = true
          mapView.userTrackingMode = .follow
