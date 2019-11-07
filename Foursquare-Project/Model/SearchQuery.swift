@@ -26,33 +26,47 @@ struct GroupItem: Codable {
     let venue: Venue?
 }
 
-class Venue:  NSObject, Codable, MKAnnotation {
+struct Venue: Codable{
+    let location: Location
+}
+
+class Location:  NSObject, Codable, MKAnnotation {
     
-    private var position: String
+    let lat: Double
+    
+    let lng: Double
+    
     
     var coordinate: CLLocationCoordinate2D {
-        let latLong = position.components(separatedBy: ",").map {$0.trimmingCharacters(in: .whitespacesAndNewlines)}.map{Double($0)}
+     
         
-        guard latLong.count == 2,
-        
-        let lat = latLong[0],
-            let long = latLong[1] else {return CLLocationCoordinate2D.init()}
-        
-        return CLLocationCoordinate2D(latitude: lat, longitude: long)
+        return CLLocationCoordinate2D(latitude: lat, longitude: lng)
     }
     
     var hasValidCoordinates: Bool {
         return coordinate.latitude != 0 && coordinate.longitude != 0
     }
     
-    static func getQuery(from JSONData: Data) -> [Venue?] {
-        var venues = [Venue?]()
+    static func getQuery(from JSONData: Data) -> [Location] {
+        var locations = [Location]()
         do {
-            venues = try JSONDecoder().decode(SearchQueryWrapper.self, from: JSONData).response.groups[0].items.map({$0.venue})
+            let optionalLocations = try JSONDecoder().decode(SearchQueryWrapper.self, from: JSONData).response.groups[0].items.map{$0.venue?.location}
+            
+            
+            for element in optionalLocations  {
+                if let nonOptional = element {
+                    locations.append(nonOptional)
+                }
+            }
+            
         } catch {
-            print("smd")
+            print(error)
+                
+                //loop through each item
+                //for each item we want to grab the venue
+                // for every venue collection location
         }
-        return venues
+        return locations
     }
     
     

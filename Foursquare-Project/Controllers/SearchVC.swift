@@ -14,6 +14,13 @@ class SearchVC: UIViewController {
     
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
+    let searchRadius: CLLocationDistance = 2000
+    
+    private var locations = [Location]() {
+        didSet {
+            mapView.addAnnotations(locations.filter{ $0.hasValidCoordinates})
+        }
+    }
     
     lazy var venueSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -24,7 +31,7 @@ class SearchVC: UIViewController {
     
     lazy var locationSearchBar: UISearchBar = {
            let searchBar = UISearchBar()
-           searchBar.placeholder = "Location"
+           searchBar.placeholder = "New York, NY"
            searchBar.setImage(UIImage(systemName: "mappin"), for: .search, state: .normal)
            searchBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
            return searchBar
@@ -44,7 +51,19 @@ class SearchVC: UIViewController {
         addConstraints()
         locationManager.delegate = self
         requestLocationAndAuthorizeIfNeeded()
+        loadData()
     }
+    
+    func loadData() {
+        QueryAPIClient.manager.getQueryData { (result) in
+            switch result {
+            case .success(let infoFromOnline):
+                self.locations = infoFromOnline 
+            case .failure(let error):
+                print(error)
+            }
+        }
+      }
     
     private func addSubviews() {
         self.view.addSubview(venueSearchBar)
@@ -116,6 +135,7 @@ class SearchVC: UIViewController {
 extension SearchVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("New locations \(locations)")
+        
          mapView.showsUserLocation = true
          mapView.userTrackingMode = .follow
     }
