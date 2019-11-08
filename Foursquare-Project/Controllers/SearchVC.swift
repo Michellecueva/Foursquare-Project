@@ -55,12 +55,13 @@ class SearchVC: UIViewController {
         addSubviews()
         addConstraints()
         locationManager.delegate = self
+        locationSearchBar.delegate = self
         requestLocationAndAuthorizeIfNeeded()
-        loadData()
+        loadData(lat: (locationManager.location?.coordinate.latitude) ?? 40.7831, long: (locationManager.location?.coordinate.longitude) ?? -73.9712)
     }
     
-    func loadData() {
-        QueryAPIClient.manager.getQueryData { (result) in
+    func loadData(lat: Double, long: Double) {
+        QueryAPIClient.manager.getQueryData(lat: lat, long: long) { (result) in
             switch result {
             case .success(let infoFromOnline):
                 self.locations = infoFromOnline 
@@ -159,12 +160,6 @@ extension SearchVC: CLLocationManagerDelegate {
             }
         }
         
-//        let currentLocation = CLLocation(latitude: -22.963451, longitude: -43.198242)
-//        location.fetchCityAndCountry { city, country, error in
-//            guard let city = city, let country = country, error == nil else { return }
-//            print(city + ", " + country)  // Rio de Janeiro, Brazil
-//        }
-        
          mapView.showsUserLocation = true
          mapView.userTrackingMode = .follow
     }
@@ -180,6 +175,39 @@ extension SearchVC: CLLocationManagerDelegate {
 
         default:
             break
+        }
+    }
+}
+
+extension SearchVC: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("return")
+        
+        userLocation = searchBar.text!
+       let geocoder = CLGeocoder()
+        
+        guard let location = searchBar.text else {return}
+        
+        geocoder.geocodeAddressString(location) { (placemarks, error) in
+            guard error == nil else {
+                print("error found")
+                return
+            }
+            
+            guard let placemark = placemarks?[0] else {
+                print("no placemark")
+                return
+            }
+            
+            guard let newLocation = placemark.location else {
+                print("no location found")
+                return
+            }
+            
+            print(newLocation)
+            self.mapView.setCenter(CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude), animated: true)
+            
+            self.loadData(lat: newLocation.coordinate.latitude , long: newLocation.coordinate.longitude)
         }
     }
 }
