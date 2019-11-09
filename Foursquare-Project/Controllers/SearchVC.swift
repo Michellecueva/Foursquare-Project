@@ -28,6 +28,7 @@ class SearchVC: UIViewController {
             let annotations = self.mapView.annotations
             self.mapView.removeAnnotations(annotations)
             mapView.addAnnotations(locations.filter{ $0.hasValidCoordinates})
+            
         }
     }
     

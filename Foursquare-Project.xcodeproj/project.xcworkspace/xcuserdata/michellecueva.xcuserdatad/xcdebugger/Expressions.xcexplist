@@ -10,5 +10,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "SearchVC.locations.didset:SearchVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "locations">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

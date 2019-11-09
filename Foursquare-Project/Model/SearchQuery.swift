@@ -27,6 +27,7 @@ struct GroupItem: Codable {
 }
 
 struct Venue: Codable{
+    let name: String
     let location: Location
 }
 
@@ -36,6 +37,7 @@ class Location:  NSObject, Codable, MKAnnotation {
     
     let lng: Double
     
+    var title: String?
     
     var coordinate: CLLocationCoordinate2D {
      
@@ -50,12 +52,14 @@ class Location:  NSObject, Codable, MKAnnotation {
     static func getQuery(from JSONData: Data) -> [Location] {
         var locations = [Location]()
         do {
-            let optionalLocations = try JSONDecoder().decode(SearchQueryWrapper.self, from: JSONData).response.groups[0].items.map{$0.venue?.location}
+            let optionalVenues = try JSONDecoder().decode(SearchQueryWrapper.self, from: JSONData).response.groups[0].items.map{$0.venue}
             
             
-            for element in optionalLocations  {
-                if let nonOptional = element {
-                    locations.append(nonOptional)
+            for element in optionalVenues {
+                if let venue = element {
+                    let location = venue.location
+                    location.title = venue.name
+                    locations.append(location)
                 }
             }
             
