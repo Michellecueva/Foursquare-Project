@@ -15,14 +15,18 @@ class SearchVC: UIViewController {
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
     let searchRadius: CLLocationDistance = 2000
-    var userLocation = String() {
+    var userLocation = "New York, NY" {
         didSet {
             locationSearchBar.placeholder = userLocation
         }
     }
     
+    var userVenue = ""
+    
     private var locations = [Location]() {
         didSet {
+            let annotations = self.mapView.annotations
+            self.mapView.removeAnnotations(annotations)
             mapView.addAnnotations(locations.filter{ $0.hasValidCoordinates})
         }
     }
@@ -35,20 +39,20 @@ class SearchVC: UIViewController {
     }()
     
     lazy var locationSearchBar: UISearchBar = {
-           let searchBar = UISearchBar()
-           searchBar.placeholder = "New York, NY"
-           searchBar.setImage(UIImage(systemName: "mappin"), for: .search, state: .normal)
-           searchBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-           return searchBar
-       }()
+        let searchBar = UISearchBar()
+        //        searchBar.placeholder = "New York, NY"
+        searchBar.setImage(UIImage(systemName: "mappin"), for: .search, state: .normal)
+        searchBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        return searchBar
+    }()
     
     lazy var listButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "line.horizontal.3"), for: .normal)
         return button
     }()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -56,12 +60,12 @@ class SearchVC: UIViewController {
         addConstraints()
         locationManager.delegate = self
         locationSearchBar.delegate = self
+        venueSearchBar.delegate = self
         requestLocationAndAuthorizeIfNeeded()
-        loadData(lat: (locationManager.location?.coordinate.latitude) ?? 40.7831, long: (locationManager.location?.coordinate.longitude) ?? -73.9712)
     }
     
-    func loadData(lat: Double, long: Double) {
-        QueryAPIClient.manager.getQueryData(lat: lat, long: long) { (result) in
+    func loadData(lat: Double, long: Double, venue: String) {
+        QueryAPIClient.manager.getQueryData(lat: lat, long: long, venue: venue) { (result) in
             switch result {
             case .success(let infoFromOnline):
                 self.locations = infoFromOnline 
@@ -69,7 +73,7 @@ class SearchVC: UIViewController {
                 print(error)
             }
         }
-      }
+    }
     
     private func addSubviews() {
         self.view.addSubview(venueSearchBar)
@@ -93,7 +97,7 @@ class SearchVC: UIViewController {
             venueSearchBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             venueSearchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50)
         ])
-
+        
     }
     
     private func addLocationSearchBarConstraints() {
@@ -136,6 +140,35 @@ class SearchVC: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
     }
+    
+    private func getCoordinatesAndVenue(location: String) {
+        
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(location) { (placemarks, error) in
+            guard error == nil else {
+                print("error found")
+                return
+            }
+            
+            guard let placemark = placemarks?[0] else {
+                print("no placemark")
+                return
+            }
+            
+            guard let newLocation = placemark.location else {
+                print("no location found")
+                return
+            }
+            
+            print(newLocation)
+            
+            
+            self.mapView.setCenter(CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude), animated: true)
+            
+            self.loadData(lat: newLocation.coordinate.latitude , long: newLocation.coordinate.longitude, venue: self.userVenue)
+        }
+        
+    }
 }
 
 extension SearchVC: CLLocationManagerDelegate {
@@ -160,8 +193,8 @@ extension SearchVC: CLLocationManagerDelegate {
             }
         }
         
-         mapView.showsUserLocation = true
-         mapView.userTrackingMode = .follow
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -172,7 +205,7 @@ extension SearchVC: CLLocationManagerDelegate {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.requestLocation()
-
+            
         default:
             break
         }
@@ -183,31 +216,17 @@ extension SearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("return")
         
-        userLocation = searchBar.text!
-       let geocoder = CLGeocoder()
-        
-        guard let location = searchBar.text else {return}
-        
-        geocoder.geocodeAddressString(location) { (placemarks, error) in
-            guard error == nil else {
-                print("error found")
-                return
-            }
+        if searchBar == locationSearchBar {
             
-            guard let placemark = placemarks?[0] else {
-                print("no placemark")
-                return
-            }
+            guard let location = searchBar.text else {return}
+            userLocation = location
+            getCoordinatesAndVenue(location: userLocation)
             
-            guard let newLocation = placemark.location else {
-                print("no location found")
-                return
-            }
+        } else {
             
-            print(newLocation)
-            self.mapView.setCenter(CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude), animated: true)
-            
-            self.loadData(lat: newLocation.coordinate.latitude , long: newLocation.coordinate.longitude)
+            guard let venue = searchBar.text else {return}
+            userVenue = venue
+            getCoordinatesAndVenue(location: userLocation)
         }
     }
 }
