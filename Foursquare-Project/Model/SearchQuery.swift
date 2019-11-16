@@ -28,7 +28,10 @@ struct GroupItem: Codable {
 
 struct Venue: Codable{
     let name: String
+    let id: String
     let location: Location
+    
+    
 }
 
 class Location:  NSObject, Codable, MKAnnotation {

@@ -18,6 +18,8 @@ class ListViewController: UIViewController {
     
     lazy var listTableView: UITableView = {
         let tableview = UITableView(frame: self.view.frame)
+        tableview.register(SearchTableViewCell.self, forCellReuseIdentifier: "VenueCell")
+        tableview.rowHeight = 80
         return tableview
     }()
 
