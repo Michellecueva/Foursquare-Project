@@ -26,6 +26,9 @@
 		286B84DB237FBB1200032CB8 /* PhotoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84DA237FBB1200032CB8 /* PhotoAPIClient.swift */; };
 		286B84DD237FBE8200032CB8 /* VenuePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84DC237FBE8200032CB8 /* VenuePhoto.swift */; };
 		286B84E12380ACB500032CB8 /* CreateCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E02380ACB500032CB8 /* CreateCollectionVC.swift */; };
+		286B84E32380B15100032CB8 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E22380B15100032CB8 /* PersistenceHelper.swift */; };
+		286B84E62380B20300032CB8 /* FoodCollectionPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E52380B20300032CB8 /* FoodCollectionPersistence.swift */; };
+		286B84E82380B21400032CB8 /* FoodCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E72380B21400032CB8 /* FoodCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,9 @@
 		286B84DA237FBB1200032CB8 /* PhotoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIClient.swift; sourceTree = "<group>"; };
 		286B84DC237FBE8200032CB8 /* VenuePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhoto.swift; sourceTree = "<group>"; };
 		286B84E02380ACB500032CB8 /* CreateCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionVC.swift; sourceTree = "<group>"; };
+		286B84E22380B15100032CB8 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		286B84E52380B20300032CB8 /* FoodCollectionPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionPersistence.swift; sourceTree = "<group>"; };
+		286B84E72380B21400032CB8 /* FoodCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 				28367F4D237212DF00B1568D /* Model */,
 				28367F1523709ABD00B1568D /* Controllers */,
 				28367F1623709AE700B1568D /* Views */,
+				286B84E42380B15800032CB8 /* Persistence */,
 				28367F4E2372236000B1568D /* Networking */,
 				28367EC4236F74ED00B1568D /* Assets.xcassets */,
 				28367EC6236F74ED00B1568D /* LaunchScreen.storyboard */,
@@ -151,6 +158,7 @@
 			children = (
 				28367F4B237212D900B1568D /* SearchQuery.swift */,
 				286B84DC237FBE8200032CB8 /* VenuePhoto.swift */,
+				286B84E72380B21400032CB8 /* FoodCollection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +174,15 @@
 			);
 			name = Networking;
 			path = "../../../Unit-4/Weather App/Weather App/Networking";
+			sourceTree = "<group>";
+		};
+		286B84E42380B15800032CB8 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				286B84E22380B15100032CB8 /* PersistenceHelper.swift */,
+				286B84E52380B20300032CB8 /* FoodCollectionPersistence.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,9 +292,12 @@
 				28367EBC236F74EC00B1568D /* AppDelegate.swift in Sources */,
 				28367F562372236000B1568D /* NetworkHelper.swift in Sources */,
 				28367F552372236000B1568D /* QueryAPIClient.swift in Sources */,
+				286B84E32380B15100032CB8 /* PersistenceHelper.swift in Sources */,
 				28367F12237099FA00B1568D /* SearchTableViewCell.swift in Sources */,
 				28367EDE236F76CE00B1568D /* CollectionVC.swift in Sources */,
 				28367F582372236000B1568D /* ImageHelper.swift in Sources */,
+				286B84E62380B20300032CB8 /* FoodCollectionPersistence.swift in Sources */,
+				286B84E82380B21400032CB8 /* FoodCollection.swift in Sources */,
 				28367F572372236000B1568D /* AppError.swift in Sources */,
 				28367EBE236F74EC00B1568D /* SceneDelegate.swift in Sources */,
 				286B84E12380ACB500032CB8 /* CreateCollectionVC.swift in Sources */,
