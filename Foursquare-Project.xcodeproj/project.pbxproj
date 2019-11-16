@@ -25,6 +25,7 @@
 		28367F5C237225AB00B1568D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F5B237225AB00B1568D /* Secrets.swift */; };
 		286B84DB237FBB1200032CB8 /* PhotoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84DA237FBB1200032CB8 /* PhotoAPIClient.swift */; };
 		286B84DD237FBE8200032CB8 /* VenuePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84DC237FBE8200032CB8 /* VenuePhoto.swift */; };
+		286B84E12380ACB500032CB8 /* CreateCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E02380ACB500032CB8 /* CreateCollectionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		28367F5B237225AB00B1568D /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		286B84DA237FBB1200032CB8 /* PhotoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIClient.swift; sourceTree = "<group>"; };
 		286B84DC237FBE8200032CB8 /* VenuePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhoto.swift; sourceTree = "<group>"; };
+		286B84E02380ACB500032CB8 /* CreateCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				28367EBF236F74EC00B1568D /* SearchVC.swift */,
 				28367F1323709A2A00B1568D /* ListViewController.swift */,
 				28367EDD236F76CE00B1568D /* CollectionVC.swift */,
+				286B84E02380ACB500032CB8 /* CreateCollectionVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				28367F582372236000B1568D /* ImageHelper.swift in Sources */,
 				28367F572372236000B1568D /* AppError.swift in Sources */,
 				28367EBE236F74EC00B1568D /* SceneDelegate.swift in Sources */,
+				286B84E12380ACB500032CB8 /* CreateCollectionVC.swift in Sources */,
 				286B84DD237FBE8200032CB8 /* VenuePhoto.swift in Sources */,
 				28367F5C237225AB00B1568D /* Secrets.swift in Sources */,
 				28367F1423709A2A00B1568D /* ListViewController.swift in Sources */,

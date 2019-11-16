@@ -13,7 +13,14 @@ class CollectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationItem.title = "My Collection"
+        self.navigationItem.setRightBarButton(.init(barButtonSystemItem: .add, target: self, action: #selector(pressedAddButton)), animated: true)
 
+    }
+    
+    @objc func pressedAddButton() {
+        let createVC = CreateCollectionVC()
+        self.navigationController?.pushViewController(createVC, animated: true)
     }
 
 }
