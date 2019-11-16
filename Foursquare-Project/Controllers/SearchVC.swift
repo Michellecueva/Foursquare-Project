@@ -23,11 +23,32 @@ class SearchVC: UIViewController {
     
     var userVenue = ""
     
-    private var locations = [Location]() {
+    private var venues = [Venue]() {
         didSet {
             let annotations = self.mapView.annotations
             self.mapView.removeAnnotations(annotations)
+            let locations = venues.map{$0.location}
             mapView.addAnnotations(locations.filter{ $0.hasValidCoordinates})
+            
+//            for venue in venues {
+//                var currentVenue = venue
+//                PhotoAPIClient.manager.getPhotoData(id: currentVenue.id) { (result) in
+//                    switch result {
+//                    case .success((let prefix,let suffix)):
+//                        ImageHelper.shared.getImage(prefix: prefix, suffix: suffix) { (result) in
+//                            switch result {
+//                            case .success(let imageFromOnline):
+//                                let imageData = imageFromOnline.jpegData(compressionQuality: 1.0)
+//                                currentVenue.image = imageData
+//                            case .failure(let error):
+//                                print(error)
+//                            }
+//                        }
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                }
+//            }
             
         }
     }
@@ -71,7 +92,7 @@ class SearchVC: UIViewController {
         QueryAPIClient.manager.getQueryData(lat: lat, long: long, venue: venue) { (result) in
             switch result {
             case .success(let infoFromOnline):
-                self.locations = infoFromOnline 
+                self.venues = infoFromOnline
             case .failure(let error):
                 print(error)
             }
@@ -80,6 +101,7 @@ class SearchVC: UIViewController {
     
     @objc func pressedListButton() {
         let listVC = ListViewController()
+        listVC.venues = venues
         self.navigationController?.pushViewController(listVC, animated: true)
     }
     

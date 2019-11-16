@@ -3,6 +3,20 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "static VenuePhotoWrapper.decodePhotoInfoFromData(from:):VenuePhoto.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SearchVC.locations.didset:SearchVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "locations">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PhotoAPIClient.getPhotoURL(id:):PhotoAPIClient.swift">
+      </ContextState>
+      <ContextState
          contextName = "SearchVC.venues.didset:SearchVC.swift">
          <PersistentStrings>
             <PersistentString
@@ -11,10 +25,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SearchVC.locations.didset:SearchVC.swift">
+         contextName = "PhotoAPIClient.getPhotoData(id:completionHandler:):PhotoAPIClient.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PhotoAPIClient.getPhotoData(id:completionHandler:):PhotoAPIClient.swift">
          <PersistentStrings>
             <PersistentString
-               value = "locations">
+               value = "venue.id">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

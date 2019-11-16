@@ -24,6 +24,7 @@
 		28367F582372236000B1568D /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F532372236000B1568D /* ImageHelper.swift */; };
 		28367F5C237225AB00B1568D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28367F5B237225AB00B1568D /* Secrets.swift */; };
 		286B84DB237FBB1200032CB8 /* PhotoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84DA237FBB1200032CB8 /* PhotoAPIClient.swift */; };
+		286B84DD237FBE8200032CB8 /* VenuePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84DC237FBE8200032CB8 /* VenuePhoto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		28367F532372236000B1568D /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		28367F5B237225AB00B1568D /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		286B84DA237FBB1200032CB8 /* PhotoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIClient.swift; sourceTree = "<group>"; };
+		286B84DC237FBE8200032CB8 /* VenuePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhoto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				28367F4B237212D900B1568D /* SearchQuery.swift */,
+				286B84DC237FBE8200032CB8 /* VenuePhoto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				28367F582372236000B1568D /* ImageHelper.swift in Sources */,
 				28367F572372236000B1568D /* AppError.swift in Sources */,
 				28367EBE236F74EC00B1568D /* SceneDelegate.swift in Sources */,
+				286B84DD237FBE8200032CB8 /* VenuePhoto.swift in Sources */,
 				28367F5C237225AB00B1568D /* Secrets.swift in Sources */,
 				28367F1423709A2A00B1568D /* ListViewController.swift in Sources */,
 			);

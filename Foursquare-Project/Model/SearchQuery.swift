@@ -31,6 +31,8 @@ struct Venue: Codable{
     let id: String
     let location: Location
     
+    var image: Data?
+    
     
 }
 
@@ -41,6 +43,7 @@ class Location:  NSObject, Codable, MKAnnotation {
     let lng: Double
     
     var title: String?
+
     
     var coordinate: CLLocationCoordinate2D {
      
@@ -52,17 +55,16 @@ class Location:  NSObject, Codable, MKAnnotation {
         return coordinate.latitude != 0 && coordinate.longitude != 0
     }
     
-    static func getQuery(from JSONData: Data) -> [Location] {
-        var locations = [Location]()
+    static func getQuery(from JSONData: Data) -> [Venue] {
+        var venues = [Venue]()
         do {
             let optionalVenues = try JSONDecoder().decode(SearchQueryWrapper.self, from: JSONData).response.groups[0].items.map{$0.venue}
             
             
             for element in optionalVenues {
                 if let venue = element {
-                    let location = venue.location
-                    location.title = venue.name
-                    locations.append(location)
+                    venues.append(venue)
+                   
                 }
             }
             
@@ -73,7 +75,7 @@ class Location:  NSObject, Codable, MKAnnotation {
                 //for each item we want to grab the venue
                 // for every venue collection location
         }
-        return locations
+        return venues
     }
     
     

@@ -14,9 +14,9 @@
             filePath = "Foursquare-Project/Controllers/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "locations"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "venues"
             landmarkType = "24">
             <Locations>
                <Location
@@ -62,39 +62,39 @@
             filePath = "Foursquare-Project/Controllers/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "loadData(lat:long:venue:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "16FB5052-7409-45F9-961F-B65B64174BFB - 4df8547e788c60ff"
+                  uuid = "16FB5052-7409-45F9-961F-B65B64174BFB - 5aa9fd060bcd2fe0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Foursquare_Project.Location&gt;, Foursquare_Project.AppError&gt;) -&gt; () in Foursquare_Project.SearchVC.loadData(lat: Swift.Double, long: Swift.Double, venue: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Foursquare_Project.Venue&gt;, Foursquare_Project.AppError&gt;) -&gt; () in Foursquare_Project.SearchVC.loadData(lat: Swift.Double, long: Swift.Double, venue: Swift.String) -&gt; ()"
                   moduleName = "Foursquare-Project"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Foursquare-Project/Foursquare-Project/Controllers/SearchVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
                   offsetFromSymbolStart = "156">
                </Location>
                <Location
-                  uuid = "16FB5052-7409-45F9-961F-B65B64174BFB - 4df8547e788c60ff"
+                  uuid = "16FB5052-7409-45F9-961F-B65B64174BFB - 5aa9fd060bcd2fe0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Foursquare_Project.Location&gt;, Foursquare_Project.AppError&gt;) -&gt; () in Foursquare_Project.SearchVC.loadData(lat: Swift.Double, long: Swift.Double, venue: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Foursquare_Project.Venue&gt;, Foursquare_Project.AppError&gt;) -&gt; () in Foursquare_Project.SearchVC.loadData(lat: Swift.Double, long: Swift.Double, venue: Swift.String) -&gt; ()"
                   moduleName = "Foursquare-Project"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Foursquare-Project/Foursquare-Project/Controllers/SearchVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
                   offsetFromSymbolStart = "172">
                </Location>
             </Locations>
@@ -142,8 +142,8 @@
             filePath = "Foursquare-Project/Controllers/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "getCoordinatesAndVenue(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "Foursquare-Project/Controllers/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "searchBarSearchButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "Foursquare-Project/Controllers/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "SearchVC"
             landmarkType = "21">
          </BreakpointContent>
@@ -190,8 +190,8 @@
             filePath = "Foursquare-Project/Controllers/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "locationManager(_:didChangeAuthorization:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "Foursquare-Project/Controllers/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "getCoordinatesAndVenue(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -216,45 +216,45 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "63E9AAA1-2575-4739-9DE5-3CB774EF5E59"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foursquare-Project/Controllers/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "locations"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "venues"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "63E9AAA1-2575-4739-9DE5-3CB774EF5E59 - 1f05012ba80899bd"
-                  shouldBeEnabled = "Yes"
+                  uuid = "63E9AAA1-2575-4739-9DE5-3CB774EF5E59 - f6ec4c1e480b5c6d"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Foursquare_Project.SearchVC.(locations in _35D561BD589B389D2B6CE7E77E6C2959).didset : Swift.Array&lt;Foursquare_Project.Location&gt;"
+                  symbolName = "Foursquare_Project.SearchVC.(venues in _35D561BD589B389D2B6CE7E77E6C2959).didset : Swift.Array&lt;Foursquare_Project.Venue&gt;"
                   moduleName = "Foursquare-Project"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Foursquare-Project/Foursquare-Project/Controllers/SearchVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "355">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "794">
                </Location>
                <Location
-                  uuid = "63E9AAA1-2575-4739-9DE5-3CB774EF5E59 - 5b5cad0882d4f616"
-                  shouldBeEnabled = "Yes"
+                  uuid = "63E9AAA1-2575-4739-9DE5-3CB774EF5E59 - 7c1101b896b992c2"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Foursquare_Project.Location) -&gt; Swift.Bool in Foursquare_Project.SearchVC.(locations in _35D561BD589B389D2B6CE7E77E6C2959).didset : Swift.Array&lt;Foursquare_Project.Location&gt;"
+                  symbolName = "closure #2 (Foursquare_Project.Location) -&gt; Swift.Bool in Foursquare_Project.SearchVC.(venues in _35D561BD589B389D2B6CE7E77E6C2959).didset : Swift.Array&lt;Foursquare_Project.Venue&gt;"
                   moduleName = "Foursquare-Project"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Foursquare-Project/Foursquare-Project/Controllers/SearchVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
                   offsetFromSymbolStart = "19">
                </Location>
             </Locations>
@@ -270,10 +270,202 @@
             filePath = "Foursquare-Project/Model/SearchQuery.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "getQuery(from:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6960AD4-A0A9-49C3-952E-F3D20A6152E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Unit-4/Weather App/Weather App/Networking/PhotoAPIClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "getPhotoData(id:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE249BB9-D926-4C55-9D35-4D2639C9B301"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Unit-4/Weather App/Weather App/Networking/PhotoAPIClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "getPhotoData(id:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CE249BB9-D926-4C55-9D35-4D2639C9B301 - 63a65352058a66c7"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foursquare_Project.PhotoAPIClient.getPhotoData(id: Swift.String, completionHandler: (Swift.Result&lt;(Swift.String, Swift.String), Foursquare_Project.AppError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Foursquare-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-4/Weather%20App/Weather%20App/Networking/PhotoAPIClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "CE249BB9-D926-4C55-9D35-4D2639C9B301 - bdde4e769ce66e70"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Foursquare_Project.AppError&gt;) -&gt; () in Foursquare_Project.PhotoAPIClient.getPhotoData(id: Swift.String, completionHandler: (Swift.Result&lt;(Swift.String, Swift.String), Foursquare_Project.AppError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Foursquare-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-4/Weather%20App/Weather%20App/Networking/PhotoAPIClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "302">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C4D720C-FE71-4FE1-ACEC-06F508F327C1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Unit-4/Weather App/Weather App/Networking/PhotoAPIClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "getPhotoData(id:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9C4D720C-FE71-4FE1-ACEC-06F508F327C1 - bdde4e769ce66e70"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Foursquare_Project.AppError&gt;) -&gt; () in Foursquare_Project.PhotoAPIClient.getPhotoData(id: Swift.String, completionHandler: (Swift.Result&lt;(Swift.String, Swift.String), Foursquare_Project.AppError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Foursquare-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-4/Weather%20App/Weather%20App/Networking/PhotoAPIClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "302">
+               </Location>
+               <Location
+                  uuid = "9C4D720C-FE71-4FE1-ACEC-06F508F327C1 - bdde4e769ce66e70"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Foursquare_Project.AppError&gt;) -&gt; () in Foursquare_Project.PhotoAPIClient.getPhotoData(id: Swift.String, completionHandler: (Swift.Result&lt;(Swift.String, Swift.String), Foursquare_Project.AppError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Foursquare-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-4/Weather%20App/Weather%20App/Networking/PhotoAPIClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "344">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84985DB5-2CC5-42D4-BBC2-8F7718AFD3EE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Unit-4/Weather App/Weather App/Networking/PhotoAPIClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "getPhotoURL(id:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "656F490D-284E-43F3-9137-DC9DCB711AD6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Foursquare-Project/Controllers/SearchVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "venues"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F413E292-DA17-4773-8F30-AF9F0B174C4B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Foursquare-Project/Controllers/SearchVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "venues"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F413E292-DA17-4773-8F30-AF9F0B174C4B - 50d8a17570024b98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.UIImage, Foursquare_Project.AppError&gt;) -&gt; () in closure #3 (Swift.Result&lt;(Swift.String, Swift.String), Foursquare_Project.AppError&gt;) -&gt; () in Foursquare_Project.SearchVC.(venues in _35D561BD589B389D2B6CE7E77E6C2959).didset : Swift.Array&lt;Foursquare_Project.Venue&gt;"
+                  moduleName = "Foursquare-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Foursquare-Project/Foursquare-Project/Controllers/SearchVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "185">
+               </Location>
+               <Location
+                  uuid = "F413E292-DA17-4773-8F30-AF9F0B174C4B - 50d8a17570024b98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.UIImage, Foursquare_Project.AppError&gt;) -&gt; () in closure #3 (Swift.Result&lt;(Swift.String, Swift.String), Foursquare_Project.AppError&gt;) -&gt; () in Foursquare_Project.SearchVC.(venues in _35D561BD589B389D2B6CE7E77E6C2959).didset : Swift.Array&lt;Foursquare_Project.Venue&gt;"
+                  moduleName = "Foursquare-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Foursquare-Project/Foursquare-Project/Controllers/SearchVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "210">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

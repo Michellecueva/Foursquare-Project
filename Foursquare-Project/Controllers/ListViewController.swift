@@ -10,7 +10,7 @@ import UIKit
 
 class ListViewController: UIViewController {
     
-    var locations = [Location]() {
+    var venues = [Venue]() {
         didSet {
             listTableView.reloadData()
         }
@@ -35,11 +35,17 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return venues.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "VenueCell", for: indexPath) as! SearchTableViewCell
+        
+        let venue = venues[indexPath.row]
+        
+        cell.nameLabel.text = venue.name
+        
+        return cell
     }
     
     
