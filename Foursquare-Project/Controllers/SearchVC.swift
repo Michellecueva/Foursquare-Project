@@ -50,6 +50,7 @@ class SearchVC: UIViewController {
     lazy var listButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "line.horizontal.3"), for: .normal)
+        button.addTarget(self, action: #selector(pressedListButton), for: .touchUpInside)
         return button
     }()
     
@@ -57,6 +58,7 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationItem.title = "Search"
         addSubviews()
         addConstraints()
         locationManager.delegate = self
@@ -74,6 +76,11 @@ class SearchVC: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    @objc func pressedListButton() {
+        let listVC = ListViewController()
+        self.navigationController?.pushViewController(listVC, animated: true)
     }
     
     private func addSubviews() {

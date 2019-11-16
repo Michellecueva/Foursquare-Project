@@ -9,16 +9,46 @@
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    var nameLabel: UILabel = {
+           let label = UILabel()
+           return label
+    }()
+    
+    lazy var venueImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        return imageView
+    }()
+       
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+           super.init(style: style, reuseIdentifier: "VenueCell")
+           setupVenueImageView()
+           setupNameLabel()
+       }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
+    //MARK: Constraint Functions
+       
+       private func setupVenueImageView() {
+           addSubview(venueImage)
+           venueImage.translatesAutoresizingMaskIntoConstraints =  false
+           NSLayoutConstraint.activate(
+               [venueImage.heightAnchor.constraint(equalTo: self.heightAnchor),
+                venueImage.widthAnchor.constraint(equalTo: venueImage.heightAnchor),
+                venueImage.leadingAnchor.constraint(equalTo: self.leadingAnchor)])
+       }
+    
+    private func setupNameLabel() {
+            let padding: CGFloat = 16
+           addSubview(nameLabel)
+           nameLabel.translatesAutoresizingMaskIntoConstraints = false
+           NSLayoutConstraint.activate(
+               [nameLabel.leadingAnchor.constraint(equalTo: venueImage.trailingAnchor, constant: padding),
+                nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
+                   nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)])
+       }
 }
