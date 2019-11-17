@@ -92,7 +92,7 @@ class CollectionViewCell: UICollectionViewCell {
           self.index = index
         self.nameLabel.text = collection.title
         
-        guard let dataImage = collection.image else {return}
+        guard let dataImage = collection.collectionImage else {return}
         self.foodImage.image = UIImage(data: dataImage)
        
     
@@ -104,7 +104,7 @@ class CollectionViewCell: UICollectionViewCell {
           self.nameLabel.text = collection.title
             self.addButton.isHidden = false
           
-          guard let dataImage = collection.image else {return}
+          guard let dataImage = collection.collectionImage else {return}
           self.foodImage.image = UIImage(data: dataImage)
         }
       

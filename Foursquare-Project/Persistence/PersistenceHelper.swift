@@ -27,6 +27,13 @@ struct PersistenceHelper<T: Codable> {
         try serializedData.write(to: url, options: Data.WritingOptions.atomic)
     }
     
+    func saveAtSpecificIndex(newElement: T, index: Int) throws {
+           var elements = try getObjects()
+           elements.insert(newElement, at: index)
+           try replace(elements: elements)
+           
+    }
+    
     
     init(fileName: String){
         self.fileName = fileName

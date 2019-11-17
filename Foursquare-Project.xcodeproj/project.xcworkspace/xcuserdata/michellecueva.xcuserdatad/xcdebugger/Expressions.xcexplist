@@ -3,10 +3,27 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "CollectionVC.addToCollection(tag:):CollectionVC.swift">
+         contextName = "PhotoAPIClient.getPhotoData(id:completionHandler:):PhotoAPIClient.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SearchVC.locations.didset:SearchVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "foodCollections">
+               value = "locations">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FoodCollectionPersistenceHelper.replaceCollection(withOldCollectionID:newCollection:):FoodCollectionPersistence.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #3 in SearchVC.venues.didset:SearchVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SearchVC.venues.didset:SearchVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "venues">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -19,16 +36,13 @@
             <PersistentString
                value = " currentVenue.image">
             </PersistentString>
+            <PersistentString
+               value = "currentVenueImages">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "PhotoAPIClient.getPhotoData(id:completionHandler:):PhotoAPIClient.swift">
-      </ContextState>
-      <ContextState
-         contextName = "PhotoAPIClient.getPhotoURL(id:):PhotoAPIClient.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #3 in SearchVC.venues.didset:SearchVC.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in PhotoAPIClient.getPhotoData(id:completionHandler:):PhotoAPIClient.swift">
@@ -39,26 +53,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SearchVC.venues.didset:SearchVC.swift">
+         contextName = "static VenuePhotoWrapper.decodePhotoInfoFromData(from:):VenuePhoto.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoAPIClient.getPhotoURL(id:):PhotoAPIClient.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CollectionVC.addToCollection(tag:):CollectionVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "venues">
+               value = "foodCollections">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "CollectionVC.collectionView(_:cellForItemAt:):CollectionVC.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SearchVC.locations.didset:SearchVC.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "locations">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "static VenuePhotoWrapper.decodePhotoInfoFromData(from:):VenuePhoto.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

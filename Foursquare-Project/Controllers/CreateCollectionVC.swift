@@ -69,7 +69,7 @@ class CreateCollectionVC: UIViewController {
         
         let imageData = UIImage(named: "noImage")?.jpegData(compressionQuality: 1.0)
         
-        let newCollection = FoodCollection(title: title, venue: [], image: imageData )
+        let newCollection = FoodCollection(title: title, venue: [], image: imageData, images: [] )
         
         try? FoodCollectionPersistenceHelper.manager.save(newCollection: newCollection)
         

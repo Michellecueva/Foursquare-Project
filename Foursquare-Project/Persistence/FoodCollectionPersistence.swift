@@ -19,13 +19,22 @@ struct FoodCollectionPersistenceHelper {
         return try persistenceHelper.getObjects()
     }
     
-//    func deletePhoto(title: String) throws {
-//        do {
-//            let cards = try getCards()
-//            let newCards = cards.filter { $0.cardTitle != title}
-//            try persistenceHelper.replace(elements: newCards)
-//        }
-//    }
+    func deleteCollection(withID: Int) throws {
+        do {
+            let collections = try getCollections()
+            let newCollection = collections.filter { $0.id != withID}
+            try persistenceHelper.replace(elements: newCollection)
+        }
+    }
+    
+    func replaceCollection(withOldCollectionID: Int, newCollection: FoodCollection) throws {
+       do {
+           let collections = try getCollections()
+        guard let indexOfOldCollection = collections.firstIndex(where: {$0.id == withOldCollectionID}) else {return}
+        try persistenceHelper.saveAtSpecificIndex(newElement: newCollection, index: indexOfOldCollection)
+        try deleteCollection(withID: withOldCollectionID)
+       }
+   }
     
     
     private let persistenceHelper = PersistenceHelper<FoodCollection>(fileName: "foodCollection.plist")

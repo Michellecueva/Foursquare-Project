@@ -39,6 +39,7 @@ class DetailVC: UIViewController {
            let collectionVC = CollectionVC()
         collectionVC.isAddingToMadeCollection = true
         collectionVC.venueBeingAdded = venue
+        collectionVC.venueImageBeingAdded = idToImageMap[venue.id]
         self.navigationController?.pushViewController(collectionVC, animated: true)
         
        }

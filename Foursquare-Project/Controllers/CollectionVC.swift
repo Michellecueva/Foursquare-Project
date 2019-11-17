@@ -14,6 +14,8 @@ class CollectionVC: UIViewController {
     
     var venueBeingAdded: Venue!
     
+    var venueImageBeingAdded: UIImage!
+    
     var foodCollections = [FoodCollection]() {
         didSet {
             foodCollectionView.reloadData()
@@ -27,7 +29,6 @@ class CollectionVC: UIViewController {
            layout.scrollDirection = .vertical
 
            let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-           collectionView.dataSource = self
            collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "foodCell")
            collectionView.showsVerticalScrollIndicator = false
            collectionView.backgroundColor = .clear
@@ -41,6 +42,8 @@ class CollectionVC: UIViewController {
         self.view.backgroundColor = .white
         setNavigationBar()
         self.view.addSubview(foodCollectionView)
+        foodCollectionView.dataSource = self
+        foodCollectionView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +75,7 @@ class CollectionVC: UIViewController {
 
 }
 
-extension CollectionVC: UICollectionViewDataSource {
+extension CollectionVC: UICollectionViewDataSource,  UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return foodCollections.count
@@ -97,13 +100,42 @@ extension CollectionVC: UICollectionViewDataSource {
 
         return cell
     }
+    
+     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let ListVC = ListViewController()
+        
+        ListVC.venues = foodCollections[indexPath.row].venues
+        
+        ListVC.currentVenueImages = foodCollections[indexPath.row].venueImages
+        
+        
+        
+        self.navigationController?.pushViewController(ListVC, animated: true)
+        }
 }
 
 extension CollectionVC: CellDelegate {
     func addToCollection(tag: Int) {
         
-        foodCollections[tag].venue.append(venueBeingAdded)
+        let currentCollection = foodCollections[tag]
+        var currentCollectionImages = currentCollection.venueImages
+        
+        var currentVenueArr = currentCollection.venues
+        currentVenueArr.append(venueBeingAdded)
+        currentCollectionImages.append(venueImageBeingAdded.jpegData(compressionQuality: 1.0))
+        
+        let newCollection = FoodCollection(
+            title: currentCollection.title,
+            venue: currentVenueArr,
+            image: currentCollection.collectionImage,
+            images: currentCollectionImages
+        )
+        
+        try? FoodCollectionPersistenceHelper.manager.replaceCollection(withOldCollectionID: currentCollection.id, newCollection: newCollection)
         // add alert saying this shit worked
+        //once you say okay you pop back to the detail vc
+        
+        print( newCollection.venues)
     }
     
 }

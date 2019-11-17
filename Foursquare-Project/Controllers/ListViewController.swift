@@ -17,6 +17,7 @@ class ListViewController: UIViewController {
     }
     
     var idToImageMap = [String: UIImage]()
+    var currentVenueImages: [Data?]?
     
     lazy var listTableView: UITableView = {
         let tableview = UITableView(frame: self.view.frame)
@@ -45,12 +46,20 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let venue = venues[indexPath.row]
         
+        // This is used for the collections view
+        if let venueImages = currentVenueImages {
+            if let venueImage = venueImages[indexPath.row] {
+                    cell.venueImage.image = UIImage(data: venueImage)
+            }
+            
+        }
+        
         cell.nameLabel.text = venue.name
         
+        // This is used for the results view
         if let image = idToImageMap[venue.id]  {
              cell.venueImage.image = image
         }
-       
         
         return cell
     }
