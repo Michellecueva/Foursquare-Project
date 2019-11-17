@@ -3,18 +3,29 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "static VenuePhotoWrapper.decodePhotoInfoFromData(from:):VenuePhoto.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SearchVC.locations.didset:SearchVC.swift">
+         contextName = "ListViewController.tableView(_:cellForRowAt:):ListViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "locations">
+               value = " currentVenue.image">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PhotoAPIClient.getPhotoData(id:completionHandler:):PhotoAPIClient.swift">
+      </ContextState>
+      <ContextState
          contextName = "PhotoAPIClient.getPhotoURL(id:):PhotoAPIClient.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #3 in SearchVC.venues.didset:SearchVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PhotoAPIClient.getPhotoData(id:completionHandler:):PhotoAPIClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "venue.id">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "SearchVC.venues.didset:SearchVC.swift">
@@ -25,15 +36,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "PhotoAPIClient.getPhotoData(id:completionHandler:):PhotoAPIClient.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in PhotoAPIClient.getPhotoData(id:completionHandler:):PhotoAPIClient.swift">
+         contextName = "SearchVC.locations.didset:SearchVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "venue.id">
+               value = "locations">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static VenuePhotoWrapper.decodePhotoInfoFromData(from:):VenuePhoto.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

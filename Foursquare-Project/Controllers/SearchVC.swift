@@ -23,6 +23,20 @@ class SearchVC: UIViewController {
     
     var userVenue = ""
     
+    var idToImageMap: [String: UIImage] = [:]
+    
+    
+      lazy var frontCollectionView:UICollectionView = {
+          var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+          let colletionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
+          layout.scrollDirection = .horizontal
+          layout.itemSize = CGSize(width: 125, height: 125)
+        colletionView.register(FrontViewCell.self, forCellWithReuseIdentifier: "frontCell")
+          colletionView.dataSource = self
+        colletionView.backgroundColor = .clear
+          return colletionView
+      }()
+
     private var venues = [Venue]() {
         didSet {
             let annotations = self.mapView.annotations
@@ -30,25 +44,26 @@ class SearchVC: UIViewController {
             let locations = venues.map{$0.location}
             mapView.addAnnotations(locations.filter{ $0.hasValidCoordinates})
             
-//            for venue in venues {
-//                var currentVenue = venue
-//                PhotoAPIClient.manager.getPhotoData(id: currentVenue.id) { (result) in
-//                    switch result {
-//                    case .success((let prefix,let suffix)):
-//                        ImageHelper.shared.getImage(prefix: prefix, suffix: suffix) { (result) in
-//                            switch result {
-//                            case .success(let imageFromOnline):
-//                                let imageData = imageFromOnline.jpegData(compressionQuality: 1.0)
-//                                currentVenue.image = imageData
-//                            case .failure(let error):
-//                                print(error)
-//                            }
-//                        }
-//                    case .failure(let error):
-//                        print(error)
-//                    }
-//                }
-//            }
+            for venue in venues {
+                PhotoAPIClient.manager.getPhotoData(venueId: venue.id) { (result) in
+                    switch result {
+                    case .success((let prefix,let suffix)):
+                        ImageHelper.shared.getImage(prefix: prefix, suffix: suffix) { (result) in
+                            switch result {
+                            case .success(let imageFromOnline):
+                                self.idToImageMap[venue.id] = imageFromOnline
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                    case .failure(let error):
+                        print(error)
+                        self.idToImageMap[venue.id] = UIImage(named: "noImage")
+                    }
+                }
+            }
+            
+            frontCollectionView.reloadData()
             
         }
     }
@@ -102,6 +117,7 @@ class SearchVC: UIViewController {
     @objc func pressedListButton() {
         let listVC = ListViewController()
         listVC.venues = venues
+        listVC.idToImageMap = idToImageMap
         self.navigationController?.pushViewController(listVC, animated: true)
     }
     
@@ -110,6 +126,7 @@ class SearchVC: UIViewController {
         self.view.addSubview(locationSearchBar)
         self.view.addSubview(listButton)
         self.view.addSubview(mapView)
+        self.view.addSubview(frontCollectionView)
     }
     
     private func addConstraints() {
@@ -117,6 +134,7 @@ class SearchVC: UIViewController {
         addLocationSearchBarConstraints()
         addListButtonConstraints()
         addMapViewConstraints()
+        foodCollectionViewConstraints()
     }
     
     private func addVenueSearchBarConstraints() {
@@ -161,6 +179,14 @@ class SearchVC: UIViewController {
             mapView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    private  func foodCollectionViewConstraints() {
+             frontCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        frontCollectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+        frontCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+             frontCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        frontCollectionView.heightAnchor.constraint(equalToConstant: 125).isActive = true
+         }
     
     private func requestLocationAndAuthorizeIfNeeded() {
         switch CLLocationManager.authorizationStatus() {
@@ -261,3 +287,26 @@ extension SearchVC: UISearchBarDelegate {
     }
 }
 
+extension SearchVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return venues.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = self.frontCollectionView.dequeueReusableCell(withReuseIdentifier: "frontCell", for: indexPath) as? FrontViewCell else {
+            print("didnt find cell")
+            return UICollectionViewCell()}
+        
+        let currentVenue = venues[indexPath.row]
+        
+          if let image = idToImageMap[currentVenue.id]  {
+            cell.foodImage.image = image
+          } else {
+            cell.foodImage.image = UIImage(named: "noImage")
+        }
+        
+        return cell
+    }
+}

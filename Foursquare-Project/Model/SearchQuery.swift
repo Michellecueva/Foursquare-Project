@@ -30,10 +30,6 @@ struct Venue: Codable{
     let name: String
     let id: String
     let location: Location
-    
-    var image: Data?
-    
-    
 }
 
 class Location:  NSObject, Codable, MKAnnotation {

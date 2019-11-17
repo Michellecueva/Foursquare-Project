@@ -10,6 +10,8 @@ import UIKit
 
 class CollectionVC: UIViewController {
     
+    var isAddingToMadeCollection = false
+    
     var foodCollections = [FoodCollection]() {
         didSet {
             foodCollectionView.reloadData()
@@ -35,8 +37,7 @@ class CollectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.navigationItem.title = "My Collection"
-        self.navigationItem.setRightBarButton(.init(barButtonSystemItem: .add, target: self, action: #selector(pressedAddButton)), animated: true)
+        setNavigationBar()
         self.view.addSubview(foodCollectionView)
     }
     
@@ -47,6 +48,15 @@ class CollectionVC: UIViewController {
     @objc func pressedAddButton() {
         let createVC = CreateCollectionVC()
         self.navigationController?.pushViewController(createVC, animated: true)
+    }
+    
+    private func setNavigationBar() {
+        self.navigationItem.title = "My Collection"
+        
+        if !isAddingToMadeCollection {
+            self.navigationItem.setRightBarButton(.init(barButtonSystemItem: .add, target: self, action: #selector(pressedAddButton)), animated: true)
+        }
+    
     }
     
     private func loadData() {
@@ -74,9 +84,13 @@ extension CollectionVC: UICollectionViewDataSource {
         
         let currentFoodCollection = foodCollections[indexPath.row]
         
-        ///fix this optional
-        cell.foodImage.image = UIImage(data: currentFoodCollection.image!)
-        cell.nameLabel.text = currentFoodCollection.title
+        if isAddingToMadeCollection {
+            cell.configureEditingCollectionCell(with: currentFoodCollection, collectionView: foodCollectionView, index: indexPath.row)
+        } else {
+            cell.configureCollectionCell(with: currentFoodCollection, collectionView: foodCollectionView, index: indexPath.row)
+        }
+        
+        
         return cell
     }
 }

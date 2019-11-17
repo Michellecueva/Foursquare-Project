@@ -16,6 +16,8 @@ class ListViewController: UIViewController {
         }
     }
     
+    var idToImageMap = [String: UIImage]()
+    
     lazy var listTableView: UITableView = {
         let tableview = UITableView(frame: self.view.frame)
         tableview.register(SearchTableViewCell.self, forCellReuseIdentifier: "VenueCell")
@@ -45,8 +47,19 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.nameLabel.text = venue.name
         
+        if let image = idToImageMap[venue.id]  {
+             cell.venueImage.image = image
+        }
+       
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let DVC = DetailVC()
+        DVC.venue = venues[indexPath.row]
+        DVC.idToImageMap = idToImageMap
+        self.navigationController?.pushViewController(DVC, animated: true)
+    }
     
 }
