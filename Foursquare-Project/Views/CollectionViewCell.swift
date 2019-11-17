@@ -9,6 +9,9 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: CellDelegate?
+    
     var nameLabel: UILabel = {
           let label = UILabel()
           label.numberOfLines = 0
@@ -26,12 +29,15 @@ class CollectionViewCell: UICollectionViewCell {
         return image
     }()
     
-    var addButton: UIButton = {
+    lazy var addButton: UIButton = { [unowned self] in
         let button = UIButton()
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         button.isHidden = true
+        button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
         return button
     }()
+    
+ 
     
     override init(frame: CGRect) {
           super.init(frame: frame)
@@ -47,6 +53,9 @@ class CollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func addButtonPressed(sender: UIButton) {
+        delegate?.addToCollection(tag: sender.tag)
+    }
 
          private func configureConstraints() {
             nameLabel.translatesAutoresizingMaskIntoConstraints = false

@@ -38,6 +38,7 @@ class DetailVC: UIViewController {
     @objc func addButtonPressed() {
            let collectionVC = CollectionVC()
         collectionVC.isAddingToMadeCollection = true
+        collectionVC.venueBeingAdded = venue
         self.navigationController?.pushViewController(collectionVC, animated: true)
         
        }

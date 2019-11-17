@@ -59,8 +59,8 @@ class Location:  NSObject, Codable, MKAnnotation {
             
             for element in optionalVenues {
                 if let venue = element {
+                    venue.location.title = venue.name
                     venues.append(venue)
-                   
                 }
             }
             

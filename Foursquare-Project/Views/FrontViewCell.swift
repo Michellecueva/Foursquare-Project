@@ -9,6 +9,8 @@
 import UIKit
 
 class FrontViewCell: UICollectionViewCell {
+    
+    
     var foodImage: UIImageView = {
           let image = UIImageView()
           return image
@@ -26,6 +28,7 @@ class FrontViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+
     private func configureConstraints() {
                    foodImage.translatesAutoresizingMaskIntoConstraints = false
                    

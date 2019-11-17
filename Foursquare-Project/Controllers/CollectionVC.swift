@@ -12,6 +12,8 @@ class CollectionVC: UIViewController {
     
     var isAddingToMadeCollection = false
     
+    var venueBeingAdded: Venue!
+    
     var foodCollections = [FoodCollection]() {
         didSet {
             foodCollectionView.reloadData()
@@ -26,9 +28,9 @@ class CollectionVC: UIViewController {
 
            let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
            collectionView.dataSource = self
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "foodCell")
+           collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "foodCell")
            collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = .clear
+           collectionView.backgroundColor = .clear
            
            
            return collectionView
@@ -84,13 +86,24 @@ extension CollectionVC: UICollectionViewDataSource {
         
         let currentFoodCollection = foodCollections[indexPath.row]
         
+        cell.addButton.tag = indexPath.row
         if isAddingToMadeCollection {
             cell.configureEditingCollectionCell(with: currentFoodCollection, collectionView: foodCollectionView, index: indexPath.row)
         } else {
             cell.configureCollectionCell(with: currentFoodCollection, collectionView: foodCollectionView, index: indexPath.row)
         }
         
-        
+        cell.delegate = self
+
         return cell
     }
+}
+
+extension CollectionVC: CellDelegate {
+    func addToCollection(tag: Int) {
+        
+        foodCollections[tag].venue.append(venueBeingAdded)
+        // add alert saying this shit worked
+    }
+    
 }

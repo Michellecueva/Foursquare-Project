@@ -23,18 +23,22 @@ class SearchVC: UIViewController {
     
     var userVenue = ""
     
+    
     var idToImageMap: [String: UIImage] = [:]
+    
+    
     
     
       lazy var frontCollectionView:UICollectionView = {
           var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-          let colletionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
+          let collectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
           layout.scrollDirection = .horizontal
           layout.itemSize = CGSize(width: 125, height: 125)
-        colletionView.register(FrontViewCell.self, forCellWithReuseIdentifier: "frontCell")
-          colletionView.dataSource = self
-        colletionView.backgroundColor = .clear
-          return colletionView
+        collectionView.register(FrontViewCell.self, forCellWithReuseIdentifier: "frontCell")
+          collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .clear
+          return collectionView
       }()
 
     private var venues = [Venue]() {
@@ -120,6 +124,7 @@ class SearchVC: UIViewController {
         listVC.idToImageMap = idToImageMap
         self.navigationController?.pushViewController(listVC, animated: true)
     }
+    
     
     private func addSubviews() {
         self.view.addSubview(venueSearchBar)
@@ -287,7 +292,7 @@ extension SearchVC: UISearchBarDelegate {
     }
 }
 
-extension SearchVC: UICollectionViewDataSource {
+extension SearchVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return venues.count
@@ -301,6 +306,7 @@ extension SearchVC: UICollectionViewDataSource {
         
         let currentVenue = venues[indexPath.row]
         
+
           if let image = idToImageMap[currentVenue.id]  {
             cell.foodImage.image = image
           } else {
@@ -308,5 +314,49 @@ extension SearchVC: UICollectionViewDataSource {
         }
         
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let currentVenue = venues[indexPath.row]
+        print(currentVenue.name)
+        
+        self.mapView.setCenter(CLLocationCoordinate2DMake(currentVenue.location.lat, currentVenue.location.lng), animated: true)
+        
+        let pointAnnotation = CustomPointAnnotation()
+        pointAnnotation.pinImageName = currentVenue.name
+        pointAnnotation.title = currentVenue.name
+        pointAnnotation.coordinate = currentVenue.location.coordinate
+        
+        let pinAnnotationView = MKPinAnnotationView(
+          annotation: pointAnnotation,
+          reuseIdentifier: "pin"
+        )
+        
+//         mapView.delegate = self
+        
+    
+        mapView.addAnnotation(pinAnnotationView.annotation!)
+        
+
+    }
+}
+
+extension SearchVC: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseIdentifier = "pin"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+
+        let customPointAnnotation = annotation as! CustomPointAnnotation
+        
+        
+
+        return annotationView
     }
 }

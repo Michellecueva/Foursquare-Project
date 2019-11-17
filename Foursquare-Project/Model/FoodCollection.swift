@@ -11,6 +11,6 @@ import UIKit
 
 struct FoodCollection: Codable {
     let title: String
-    let venue: [Venue]
+    var venue: [Venue]
     let image: Data?
 }

@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "CollectionVC.addToCollection(tag:):CollectionVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "foodCollections">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SearchVC.collectionView(_:didSelectItemAt:):SearchVC.swift">
+      </ContextState>
+      <ContextState
          contextName = "ListViewController.tableView(_:cellForRowAt:):ListViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -34,6 +45,9 @@
                value = "venues">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CollectionVC.collectionView(_:cellForItemAt:):CollectionVC.swift">
       </ContextState>
       <ContextState
          contextName = "SearchVC.locations.didset:SearchVC.swift">

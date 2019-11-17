@@ -32,6 +32,7 @@
 		286B84EA2380DF5D00032CB8 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E92380DF5D00032CB8 /* CustomAnnotation.swift */; };
 		286B84EC2380E03100032CB8 /* FrontViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84EB2380E03100032CB8 /* FrontViewCell.swift */; };
 		286B84EE2380E74200032CB8 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84ED2380E74200032CB8 /* DetailVC.swift */; };
+		286B84F02381DC4F00032CB8 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84EF2381DC4F00032CB8 /* Protocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		286B84E92380DF5D00032CB8 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		286B84EB2380E03100032CB8 /* FrontViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontViewCell.swift; sourceTree = "<group>"; };
 		286B84ED2380E74200032CB8 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		286B84EF2381DC4F00032CB8 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				28367EBB236F74EC00B1568D /* AppDelegate.swift */,
 				28367EBD236F74EC00B1568D /* SceneDelegate.swift */,
 				28367F5B237225AB00B1568D /* Secrets.swift */,
+				286B84EF2381DC4F00032CB8 /* Protocol.swift */,
 				28367F4D237212DF00B1568D /* Model */,
 				28367F1523709ABD00B1568D /* Controllers */,
 				28367F1623709AE700B1568D /* Views */,
@@ -300,6 +303,7 @@
 				28367EC0236F74EC00B1568D /* SearchVC.swift in Sources */,
 				28367EBC236F74EC00B1568D /* AppDelegate.swift in Sources */,
 				28367F562372236000B1568D /* NetworkHelper.swift in Sources */,
+				286B84F02381DC4F00032CB8 /* Protocol.swift in Sources */,
 				28367F552372236000B1568D /* QueryAPIClient.swift in Sources */,
 				286B84EA2380DF5D00032CB8 /* CustomAnnotation.swift in Sources */,
 				286B84E32380B15100032CB8 /* PersistenceHelper.swift in Sources */,
