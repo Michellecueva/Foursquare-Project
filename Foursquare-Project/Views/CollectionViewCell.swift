@@ -31,7 +31,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     lazy var addButton: UIButton = { [unowned self] in
         let button = UIButton()
-        button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        button.setImage(UIImage(named: "AddButton"), for: .normal)
         button.isHidden = true
         button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
         return button

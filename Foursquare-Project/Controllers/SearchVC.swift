@@ -22,51 +22,27 @@ class SearchVC: UIViewController {
     }
     
     var userVenue = ""
-    
-    
     var idToImageMap: [String: UIImage] = [:]
     
-    
-    
-    
-      lazy var frontCollectionView:UICollectionView = {
-          var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-          let collectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
-          layout.scrollDirection = .horizontal
-          layout.itemSize = CGSize(width: 125, height: 125)
+    lazy var frontCollectionView:UICollectionView = {
+        var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+        let collectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 125, height: 125)
         collectionView.register(FrontViewCell.self, forCellWithReuseIdentifier: "frontCell")
-          collectionView.dataSource = self
+        collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
-          return collectionView
-      }()
-
+        return collectionView
+    }()
+    
     private var venues = [Venue]() {
         didSet {
             let annotations = self.mapView.annotations
             self.mapView.removeAnnotations(annotations)
             let locations = venues.map{$0.location}
             mapView.addAnnotations(locations.filter{ $0.hasValidCoordinates})
-            
-            for venue in venues {
-                PhotoAPIClient.manager.getPhotoData(venueId: venue.id) { (result) in
-                    switch result {
-                    case .success((let prefix,let suffix)):
-                        ImageHelper.shared.getImage(prefix: prefix, suffix: suffix) { (result) in
-                            switch result {
-                            case .success(let imageFromOnline):
-                                self.idToImageMap[venue.id] = imageFromOnline
-                            case .failure(let error):
-                                print(error)
-                            }
-                        }
-                    case .failure(let error):
-                        print(error)
-                        self.idToImageMap[venue.id] = UIImage(named: "noImage")
-                    }
-                }
-            }
-            
+            createMappingForImages(venues: venues)
             frontCollectionView.reloadData()
             
         }
@@ -81,7 +57,6 @@ class SearchVC: UIViewController {
     
     lazy var locationSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        //        searchBar.placeholder = "New York, NY"
         searchBar.setImage(UIImage(systemName: "mappin"), for: .search, state: .normal)
         searchBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return searchBar
@@ -104,6 +79,7 @@ class SearchVC: UIViewController {
         locationManager.delegate = self
         locationSearchBar.delegate = self
         venueSearchBar.delegate = self
+        mapView.delegate = self
         requestLocationAndAuthorizeIfNeeded()
     }
     
@@ -186,12 +162,12 @@ class SearchVC: UIViewController {
     }
     
     private  func foodCollectionViewConstraints() {
-             frontCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        frontCollectionView.translatesAutoresizingMaskIntoConstraints = false
         frontCollectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
         frontCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-             frontCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        frontCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         frontCollectionView.heightAnchor.constraint(equalToConstant: 125).isActive = true
-         }
+    }
     
     private func requestLocationAndAuthorizeIfNeeded() {
         switch CLLocationManager.authorizationStatus() {
@@ -199,6 +175,31 @@ class SearchVC: UIViewController {
             locationManager.requestLocation()
         default:
             locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    private func createMappingForImages(venues: [Venue]) {
+        for venue in venues {
+            PhotoAPIClient.manager.getPhotoData(venueId: venue.id) { (result) in
+                switch result {
+                case .success((let prefix,let suffix)):
+                    ImageHelper.shared.getImage(prefix: prefix, suffix: suffix) { (result) in
+                        switch result {
+                        case .success(let imageFromOnline):
+                            self.idToImageMap[venue.id] = imageFromOnline
+                            DispatchQueue.main.async {
+                                 self.frontCollectionView.reloadData()
+                            }
+                           
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                    self.idToImageMap[venue.id] = UIImage(named: "noImage")
+                }
+            }
         }
     }
     
@@ -221,9 +222,6 @@ class SearchVC: UIViewController {
                 return
             }
             
-            print(newLocation)
-            
-            
             self.mapView.setCenter(CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude), animated: true)
             
             self.loadData(lat: newLocation.coordinate.latitude , long: newLocation.coordinate.longitude, venue: self.userVenue)
@@ -234,7 +232,6 @@ class SearchVC: UIViewController {
 
 extension SearchVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("New locations \(locations)")
         
         let geocoder = CLGeocoder()
         
@@ -275,7 +272,6 @@ extension SearchVC: CLLocationManagerDelegate {
 
 extension SearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("return")
         
         if searchBar == locationSearchBar {
             
@@ -306,57 +302,41 @@ extension SearchVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         
         let currentVenue = venues[indexPath.row]
         
-
-          if let image = idToImageMap[currentVenue.id]  {
+        
+        if let image = idToImageMap[currentVenue.id]  {
             cell.foodImage.image = image
-          } else {
+        } else {
             cell.foodImage.image = UIImage(named: "noImage")
         }
         
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let currentVenue = venues[indexPath.row]
-        print(currentVenue.name)
         
         self.mapView.setCenter(CLLocationCoordinate2DMake(currentVenue.location.lat, currentVenue.location.lng), animated: true)
         
-        let pointAnnotation = CustomPointAnnotation()
-        pointAnnotation.pinImageName = currentVenue.name
-        pointAnnotation.title = currentVenue.name
-        pointAnnotation.coordinate = currentVenue.location.coordinate
-        
-        let pinAnnotationView = MKPinAnnotationView(
-          annotation: pointAnnotation,
-          reuseIdentifier: "pin"
-        )
-        
-//         mapView.delegate = self
-        
-    
-        mapView.addAnnotation(pinAnnotationView.annotation!)
-        
-
     }
+    
 }
 
 extension SearchVC: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let reuseIdentifier = "pin"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
-
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-            annotationView?.canShowCallout = true
-        } else {
-            annotationView?.annotation = annotation
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let annotation = view.annotation
+        for venue in venues {
+            let sameLat = venue.location.coordinate.latitude == annotation?.coordinate.latitude
+            let sameLon = venue.location.coordinate.longitude == annotation?.coordinate.longitude
+            if sameLat && sameLon {
+                
+                let DVC = DetailVC()
+                
+                DVC.venue = venue
+                DVC.idToImageMap = idToImageMap
+                
+                self.navigationController?.pushViewController(DVC, animated: true)
+            }
         }
-
-        let customPointAnnotation = annotation as! CustomPointAnnotation
-        
-        
-
-        return annotationView
     }
 }

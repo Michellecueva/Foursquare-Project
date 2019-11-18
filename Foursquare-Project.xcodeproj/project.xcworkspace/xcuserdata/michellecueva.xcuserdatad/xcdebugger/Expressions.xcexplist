@@ -28,6 +28,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "SearchVC.mapView(_:didSelect:):SearchVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "annotation?.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in SearchVC.loadData(lat:long:venue:):SearchVC.swift">
+      </ContextState>
+      <ContextState
          contextName = "SearchVC.collectionView(_:didSelectItemAt:):SearchVC.swift">
       </ContextState>
       <ContextState
@@ -53,10 +64,40 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "SearchVC.mapView(_:viewFor:):SearchVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "annotation.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PhotoAPIClient.getPhotoData(venueId:completionHandler:):PhotoAPIClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "url">
+            </PersistentString>
+            <PersistentString
+               value = "venueID">
+            </PersistentString>
+            <PersistentString
+               value = "getPhotoURL(id: venueId)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "static VenuePhotoWrapper.decodePhotoInfoFromData(from:):VenuePhoto.swift">
       </ContextState>
       <ContextState
+         contextName = "SearchVC.createMappingForImages(venues:):SearchVC.swift">
+      </ContextState>
+      <ContextState
          contextName = "PhotoAPIClient.getPhotoURL(id:):PhotoAPIClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Secrets.ClientID">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "CollectionVC.addToCollection(tag:):CollectionVC.swift">

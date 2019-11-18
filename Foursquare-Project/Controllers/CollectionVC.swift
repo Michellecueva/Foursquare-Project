@@ -65,12 +65,21 @@ class CollectionVC: UIViewController {
     }
     
     private func loadData() {
-        do {
-            foodCollections = try FoodCollectionPersistenceHelper.manager.getCollections()
-        } catch {
-            //figure out what you usually put here
-        }
+        foodCollections = try! FoodCollectionPersistenceHelper.manager.getCollections()
+    }
+    
+    private func addedVenueAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
+        let okay = UIAlertAction(title: "Okay", style: .default, handler: {
+            (alert) -> Void in
+            self.navigationController?.popViewController(animated: true)
+        })
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(okay)
+        alert.addAction(cancel)
+        present(alert,animated: true)
     }
 
 }
@@ -127,15 +136,13 @@ extension CollectionVC: CellDelegate {
         let newCollection = FoodCollection(
             title: currentCollection.title,
             venue: currentVenueArr,
-            image: currentCollection.collectionImage,
+            image: currentCollectionImages[0],
             images: currentCollectionImages
         )
         
         try? FoodCollectionPersistenceHelper.manager.replaceCollection(withOldCollectionID: currentCollection.id, newCollection: newCollection)
-        // add alert saying this shit worked
-        //once you say okay you pop back to the detail vc
         
-        print( newCollection.venues)
+        addedVenueAlert(title: "Saved!", message: "Your venue has been saved to \(newCollection.title)")
     }
     
 }

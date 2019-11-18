@@ -29,7 +29,6 @@
 		286B84E32380B15100032CB8 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E22380B15100032CB8 /* PersistenceHelper.swift */; };
 		286B84E62380B20300032CB8 /* FoodCollectionPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E52380B20300032CB8 /* FoodCollectionPersistence.swift */; };
 		286B84E82380B21400032CB8 /* FoodCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E72380B21400032CB8 /* FoodCollection.swift */; };
-		286B84EA2380DF5D00032CB8 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84E92380DF5D00032CB8 /* CustomAnnotation.swift */; };
 		286B84EC2380E03100032CB8 /* FrontViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84EB2380E03100032CB8 /* FrontViewCell.swift */; };
 		286B84EE2380E74200032CB8 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84ED2380E74200032CB8 /* DetailVC.swift */; };
 		286B84F02381DC4F00032CB8 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B84EF2381DC4F00032CB8 /* Protocol.swift */; };
@@ -72,7 +71,6 @@
 		286B84E22380B15100032CB8 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		286B84E52380B20300032CB8 /* FoodCollectionPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionPersistence.swift; sourceTree = "<group>"; };
 		286B84E72380B21400032CB8 /* FoodCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollection.swift; sourceTree = "<group>"; };
-		286B84E92380DF5D00032CB8 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		286B84EB2380E03100032CB8 /* FrontViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontViewCell.swift; sourceTree = "<group>"; };
 		286B84ED2380E74200032CB8 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		286B84EF2381DC4F00032CB8 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 				28367F4B237212D900B1568D /* SearchQuery.swift */,
 				286B84DC237FBE8200032CB8 /* VenuePhoto.swift */,
 				286B84E72380B21400032CB8 /* FoodCollection.swift */,
-				286B84E92380DF5D00032CB8 /* CustomAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 				28367F562372236000B1568D /* NetworkHelper.swift in Sources */,
 				286B84F02381DC4F00032CB8 /* Protocol.swift in Sources */,
 				28367F552372236000B1568D /* QueryAPIClient.swift in Sources */,
-				286B84EA2380DF5D00032CB8 /* CustomAnnotation.swift in Sources */,
 				286B84E32380B15100032CB8 /* PersistenceHelper.swift in Sources */,
 				28367F12237099FA00B1568D /* SearchTableViewCell.swift in Sources */,
 				28367EDE236F76CE00B1568D /* CollectionVC.swift in Sources */,

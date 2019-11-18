@@ -55,25 +55,42 @@ class CreateCollectionVC: UIViewController {
           NSLayoutConstraint.activate([
               createButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
               createButton.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 50),
-//              titleTextField.heightAnchor.constraint(equalToConstant: 50),
-//              titleTextField.widthAnchor.constraint(equalToConstant: 300)
           ])
+      }
+    
+    private func errorAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+          
+          let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+          alert.addAction(cancel)
+          present(alert,animated: true)
       }
     
     
       @objc func buttonPressed() {
-        guard let title = titleTextField.text else {
-            //print alert
+        guard let fieldTitle = titleTextField.text else {
+            errorAlert(title: "Missing Title", message: "You must enter a title to create a collection")
             return
         }
         
-        let imageData = UIImage(named: "noImage")?.jpegData(compressionQuality: 1.0)
+        let getCollection = try? FoodCollectionPersistenceHelper.manager.getCollections()
         
-        let newCollection = FoodCollection(title: title, venue: [], image: imageData, images: [] )
+        let collectionWithSameTitle = getCollection?.filter{$0.title == fieldTitle}
         
-        try? FoodCollectionPersistenceHelper.manager.save(newCollection: newCollection)
         
-        self.navigationController?.popViewController(animated: true)
+        if collectionWithSameTitle?.count == 0 {
+            
+            let imageData = UIImage(named: "noImage")?.jpegData(compressionQuality: 1.0)
+            
+            let newCollection = FoodCollection(title: fieldTitle, venue: [], image: imageData, images: [] )
+            
+            try? FoodCollectionPersistenceHelper.manager.save(newCollection: newCollection)
+            
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            errorAlert(title: "Already Exists", message: "You already have a collection with the same title")
+        }
+        
     }
     
 }
