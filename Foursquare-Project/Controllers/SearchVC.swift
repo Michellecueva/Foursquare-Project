@@ -59,6 +59,7 @@ class SearchVC: UIViewController {
         let searchBar = UISearchBar()
         searchBar.setImage(UIImage(systemName: "mappin"), for: .search, state: .normal)
         searchBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchBar.placeholder = "New York, NY"
         return searchBar
     }()
     
@@ -78,9 +79,10 @@ class SearchVC: UIViewController {
         addConstraints()
         locationManager.delegate = self
         locationSearchBar.delegate = self
+         requestLocationAndAuthorizeIfNeeded()
         venueSearchBar.delegate = self
         mapView.delegate = self
-        requestLocationAndAuthorizeIfNeeded()
+       
     }
     
     func loadData(lat: Double, long: Double, venue: String) {
