@@ -30,5 +30,29 @@ class Foursquare_ProjectTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
+    private func SearchQueryModel() -> Data? {
+            let bundle = Bundle(for: type(of: self))
+            guard let pathToData = bundle.path(forResource: "SearchSample", ofType: ".json")  else {
+                XCTFail("couldn't find Json")
+                return nil
+            }
+            let url = URL(fileURLWithPath: pathToData)
+            do {
+                let data = try Data(contentsOf: url)
+                return data
+            } catch let error {
+                fatalError("couldn't find data \(error)")
+            }
+        }
+    
+    func testQueryModel () {
+            let data = SearchQueryModel() ?? Data()
+            
+            do {
+                let searchData = Location.getQuery(from: data)
+                
+                 XCTAssertTrue(searchData.count > 0, "model was not loaded")
+            } 
+    }
 }
